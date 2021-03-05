@@ -1,6 +1,8 @@
 # react-redux-sandbox
 
-Try React Redux
+Try React Redux.
+
+Reference: https://www.udemy.com/course/react-application-development
 
 ## Setup
 
@@ -11,4 +13,12 @@ $ touch .bash_history
 $ docker-compose build
 $ docker-compose run --rm app yarn install
 $ docker-compose up
+```
+
+## Local Development
+
+```
+$ cd react-redux-sandbox
+$ docker-compose up
+$ open "http://localhost:3000/"
 ```
