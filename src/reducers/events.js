@@ -1,12 +1,13 @@
+import _ from 'lodash';
 import { READ_EVENTS } from '../actions';
 
-const events = (state = {}, action) => {
+const eventsReducer = (events = {}, action) => {
   switch (action.type) {
     case READ_EVENTS:
-      return state;
+      return _.mapKeys(action.response.data, 'id');
     default:
-      return state;
+      return events;
   }
 };
 
-export default events;
+export default eventsReducer;
