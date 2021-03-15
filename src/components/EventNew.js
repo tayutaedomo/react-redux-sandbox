@@ -3,9 +3,14 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 
-// import { postEvent } from '../actions';
+import { postEvent } from '../actions';
 
 class EventNew extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
   renderField(field) {
     const {
       input,
@@ -13,8 +18,6 @@ class EventNew extends React.Component {
       type,
       meta: { touched, error },
     } = field;
-    console.log(field);
-    console.log(touched, error);
 
     return (
       <div>
@@ -24,9 +27,16 @@ class EventNew extends React.Component {
     );
   }
 
+  async onSubmit(values) {
+    await this.props.postEvent(values);
+    this.props.history.push('/');
+  }
+
   render() {
+    const { handleSubmit } = this.props;
+
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit)}>
         <div>
           <Field
             label="Title"
@@ -58,13 +68,12 @@ const validate = (values) => {
   if (!values.title) errors.title = 'Enter a title, please';
   if (!values.body) errors.body = 'Enter a boy, please';
 
-  console.log(errors);
   return errors;
 };
 
-// const mapDispatchToProps = { readEvents };
+const mapDispatchToProps = { postEvent };
 
 export default connect(
   null,
-  null
+  mapDispatchToProps
 )(reduxForm({ validate, form: 'eventNewForm' })(EventNew));
