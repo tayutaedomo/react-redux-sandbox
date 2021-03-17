@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { postEvent } from '../actions';
 
-class EventNew extends React.Component {
+class EventsNew extends React.Component {
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
@@ -80,4 +80,4 @@ const mapDispatchToProps = { postEvent };
 export default connect(
   null,
   mapDispatchToProps
-)(reduxForm({ validate, form: 'eventNewForm' })(EventNew));
+)(reduxForm({ validate, form: 'eventNewForm' })(EventsNew));

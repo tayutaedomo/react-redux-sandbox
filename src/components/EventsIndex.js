@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { readEvents } from '../actions';
 
-class EventIndex extends React.Component {
+class EventsIndex extends React.Component {
   componentDidMount() {
     this.props.readEvents();
   }
@@ -42,4 +42,4 @@ class EventIndex extends React.Component {
 const mapStateToProps = (state) => ({ events: state.events });
 const mapDispatchToProps = { readEvents };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(EventsIndex);
