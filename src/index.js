@@ -1,20 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import './index.css';
 import reducer from './reducers';
-import App from './components/App';
+import EventsIndex from './components/EventsIndex';
+import EventsNew from './components/EventsNew';
+import EventsShow from './components/EventsShow';
 import reportWebVitals from './reportWebVitals';
 
-const store = createStore(reducer);
+const enhancer =
+  process.env.NODE_ENV === 'development'
+    ? composeWithDevTools(applyMiddleware(thunk))
+    : applyMiddleware(thunk);
+const store = createStore(reducer, enhancer);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <MuiThemeProvider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/events/new" component={EventsNew} />
+            <Route path="/events/:id" component={EventsShow} />
+            <Route exact path="/" component={EventsIndex} />
+            <Route exact path="/events" component={EventsIndex} />
+          </Switch>
+        </BrowserRouter>
+      </Provider>
+    </MuiThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
