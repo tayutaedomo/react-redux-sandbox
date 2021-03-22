@@ -42,12 +42,12 @@ class EventsShow extends React.Component {
     //console.log(this.props.match);
     const { id } = this.props.match.params;
     await this.props.deleteEvent(id);
-    this.props.history.push('/');
+    this.props.history.push('/events');
   }
 
   async onSubmit(values) {
     await this.props.putEvent(values);
-    this.props.history.push('/');
+    this.props.history.push('/events');
   }
 
   render() {
@@ -81,7 +81,7 @@ class EventsShow extends React.Component {
         <RaisedButton
           label="Cancel"
           style={style}
-          containerElement={<Link to="/" />}
+          containerElement={<Link to="/events" />}
         />
         <RaisedButton
           label="Delete"

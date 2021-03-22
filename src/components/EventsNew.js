@@ -34,7 +34,7 @@ class EventsNew extends React.Component {
 
   async onSubmit(values) {
     await this.props.postEvent(values);
-    this.props.history.push('/');
+    this.props.history.push('/events');
   }
 
   render() {
@@ -68,7 +68,7 @@ class EventsNew extends React.Component {
         <RaisedButton
           label="Cancel"
           style={style}
-          containerElement={<Link to="/" />}
+          containerElement={<Link to="/events" />}
         />
       </form>
     );
