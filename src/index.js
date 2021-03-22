@@ -13,6 +13,7 @@ import EventsIndex from './components/EventsIndex';
 import EventsNew from './components/EventsNew';
 import EventsShow from './components/EventsShow';
 import reportWebVitals from './reportWebVitals';
+import Home from './components/Home';
 
 const enhancer =
   process.env.NODE_ENV === 'development'
@@ -28,8 +29,8 @@ ReactDOM.render(
           <Switch>
             <Route path="/events/new" component={EventsNew} />
             <Route path="/events/:id" component={EventsShow} />
-            <Route exact path="/" component={EventsIndex} />
             <Route exact path="/events" component={EventsIndex} />
+            <Route exact path="/" component={Home} />
           </Switch>
         </BrowserRouter>
       </Provider>
