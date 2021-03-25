@@ -67,4 +67,4 @@ class EventsIndex extends React.Component {
 const mapStateToProps = (state) => ({ events: state.events });
 const mapDispatchToProps = { readEvents };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventsIndex);
+export default connect(mapStateToProps, null)(EventsIndex);
