@@ -14,6 +14,7 @@ import EventsNew from './components/EventsNew';
 import EventsShow from './components/EventsShow';
 import reportWebVitals from './reportWebVitals';
 import Home from './components/Home';
+import FormFile from './components/FormFile';
 
 const enhancer =
   process.env.NODE_ENV === 'development'
@@ -30,6 +31,7 @@ ReactDOM.render(
             <Route path="/events/new" component={EventsNew} />
             <Route path="/events/:id" component={EventsShow} />
             <Route exact path="/events" component={EventsIndex} />
+            <Route exact path="/form_file" component={FormFile} />
             <Route exact path="/" component={Home} />
           </Switch>
         </BrowserRouter>

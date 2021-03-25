@@ -33,6 +33,9 @@ export default function Home() {
               to={'/events'}
             />
           </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+            <HomeCard headline={'Try File form'} content="" to={'/form_file'} />
+          </Grid>
         </Grid>
       </Container>
     </React.Fragment>
